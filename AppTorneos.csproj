@@ -180,6 +180,18 @@
     <Compile Include="Migrations\202001170214095_first.Designer.cs">
       <DependentUpon>202001170214095_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001171721001_id_usuario_en_equipo.cs" />
+    <Compile Include="Migrations\202001171721001_id_usuario_en_equipo.Designer.cs">
+      <DependentUpon>202001171721001_id_usuario_en_equipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001171737182_id_usuario_en_empresa.cs" />
+    <Compile Include="Migrations\202001171737182_id_usuario_en_empresa.Designer.cs">
+      <DependentUpon>202001171737182_id_usuario_en_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001172127059_id_empresa-enusuario.cs" />
+    <Compile Include="Migrations\202001172127059_id_empresa-enusuario.Designer.cs">
+      <DependentUpon>202001172127059_id_empresa-enusuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Empresa.cs" />
@@ -285,6 +297,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001170214095_first.resx">
       <DependentUpon>202001170214095_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001171721001_id_usuario_en_equipo.resx">
+      <DependentUpon>202001171721001_id_usuario_en_equipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001171737182_id_usuario_en_empresa.resx">
+      <DependentUpon>202001171737182_id_usuario_en_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001172127059_id_empresa-enusuario.resx">
+      <DependentUpon>202001172127059_id_empresa-enusuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
