@@ -1,0 +1,128 @@
+﻿@model IEnumerable<AppTorneos.Models.Partido>
+
+@{
+    ViewBag.Title = "IndexCopa";
+}
+
+<h2>IndexCopa</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.equipoUno)
+        </th>
+        <th>
+            Marcador 1
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.equipoDos)
+        </th>
+        <th>
+            Marcador 2
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.torneo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horaUno)
+        </th>
+        <th>
+            
+        </th>
+
+    </tr>
+    <th>Grupo A</th>
+    @foreach (var item in Model)
+    {
+
+        if (item.grupo == "A")
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoUno)
+    </td>
+    <td>
+        <input type="number" style="width:50px"/>
+    </td>
+    <td>vs</td>
+    <td>
+        <input type="number" style="width:50px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoDos)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horaUno)
+    </td>
+    <td>
+        <button>Guardar</button>
+    </td>
+
+</tr>
+        }
+    }
+    <th>Grupo B</th>
+    @foreach (var item in Model)
+    {
+
+        if (item.grupo == "B")
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoUno)
+    </td>
+    <td>
+        <input type="number" style="width:50px" />
+    </td>
+    <td>vs</td>
+    <td>
+        <input type="number" style="width:50px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoDos)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.horaUno)
+    </td>
+    <td>
+        <button>Guardar</button>
+    </td>
+</tr>
+        }
+    }
+    <th>Grupo C</th>
+    @foreach (var item in Model)
+    {
+
+        if (item.grupo == "C")
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoUno)
+    </td>
+    <td>
+        <input type="number" style="width:50px" />
+    </td>
+    <td>vs</td>
+    <td>
+        <input type="number" style="width:50px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipoDos)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horaUno)
+    </td>
+    <td>
+        <button>Guardar</button>
+    </td>
+</tr>
+        }
+    }
+
+</table>

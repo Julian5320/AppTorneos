@@ -38,5 +38,6 @@ namespace AppTorneos.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

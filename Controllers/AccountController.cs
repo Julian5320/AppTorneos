@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AppTorneos.Models;
+using System.Data.Entity;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AppTorneos.Controllers
 {
@@ -149,6 +152,47 @@ namespace AppTorneos.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            //Si el usuario esta logueado hara un proceso para crear otro usuario con el mismo id de empresa 
+    
+                if (ModelState.IsValid)
+                {
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        await UserManager.AddToRoleAsync(user.Id, "Admin");
+                    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Enviar correo electrónico con este vínculo
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+
+
+                    Empresa empresa = new Empresa();
+                        empresa.Nombre = model.Empresa;
+                        empresa.id_Usuario = user.Id.ToString();
+                        db.Empresas.Add(empresa);
+                        db.SaveChanges();
+     
+                        
+
+
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+                }
+                // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+                return View(model);
+            }
+
+
+        [AllowAnonymous]
+        public async Task<ActionResult> RegisterUser(RegisterViewModelUser model)
+        {
+            //Si el usuario esta logueado hara un proceso para crear otro usuario con el mismo id de empresa 
             if (User.Identity.IsAuthenticated == true)
             {
                 var id_usuario = User.Identity.GetUserId().ToString();
@@ -160,7 +204,7 @@ namespace AppTorneos.Controllers
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        await UserManager.AddToRoleAsync(user.Id, "User");
 
                         // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                         // Enviar correo electrónico con este vínculo
@@ -170,43 +214,34 @@ namespace AppTorneos.Controllers
 
 
 
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-            }
-            else {
-                if (ModelState.IsValid)
-                {
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-                    var result = await UserManager.CreateAsync(user, model.Password);
-                    if (result.Succeeded)
-                    {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                        // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                        // Enviar correo electrónico con este vínculo
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-
-                        Empresa empresa = new Empresa();
-                        empresa.Nombre = model.Empresa;
-                        empresa.id_Usuario = user.Id.ToString();
-                        db.Empresas.Add(empresa);
-                        db.SaveChanges();
-
-
-
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("ListUser", "Account");
                     }
                     AddErrors(result);
                 }
             }
-                // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
-                return View(model);
-            }
-        
-            
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
+        public ActionResult ListUser()
+        {
+            var id_usuario = User.Identity.GetUserId().ToString();
+            var id_empresa = (from userId in db.Empresas where userId.id_Usuario == id_usuario select userId.id).FirstOrDefault();
+            var users = (from useres in db.Users where useres.empresa_id == id_empresa select useres).ToList();
+            return View(users);
+        }
+        [AllowAnonymous]
+        public ActionResult Delete(string id)
+        {
+            var cSelect = (from x in db.Users
+                          where x.Id == id
+                          select x).FirstOrDefault();
+            db.Users.Remove(cSelect);
+            db.SaveChanges();
+            return RedirectToAction("ListUser", "Account");
+        }
+
+
+
 
         //
         // GET: /Account/ConfirmEmail

@@ -1,0 +1,66 @@
+﻿@model AppTorneos.Models.Partido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Partido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.equipoUno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipoUno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.equipoDos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipoDos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.torneo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.torneo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horaUno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horaUno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horaDos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horaDos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

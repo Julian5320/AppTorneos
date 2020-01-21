@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscritosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartidosController.cs" />
     <Compile Include="Controllers\TorneosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,6 +193,10 @@
     <Compile Include="Migrations\202001172127059_id_empresa-enusuario.Designer.cs">
       <DependentUpon>202001172127059_id_empresa-enusuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001201456218_torneo_partido.cs" />
+    <Compile Include="Migrations\202001201456218_torneo_partido.Designer.cs">
+      <DependentUpon>202001201456218_torneo_partido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Empresa.cs" />
@@ -203,6 +208,8 @@
     <Compile Include="Models\Partido.cs" />
     <Compile Include="Models\Torneo.cs" />
     <Compile Include="Models\ViewModel\EquiposYTorneos.cs" />
+    <Compile Include="Models\ViewModel\PartidosDatos.cs" />
+    <Compile Include="Models\ViewModel\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -277,6 +284,14 @@
     <Content Include="Views\Inscritos\Details.cshtml" />
     <Content Include="Views\Inscritos\Edit.cshtml" />
     <Content Include="Views\Inscritos\Index.cshtml" />
+    <Content Include="Views\Account\RegisterUser.cshtml" />
+    <Content Include="Views\Account\ListUser.cshtml" />
+    <Content Include="Views\Partidos\Create.cshtml" />
+    <Content Include="Views\Partidos\Delete.cshtml" />
+    <Content Include="Views\Partidos\Details.cshtml" />
+    <Content Include="Views\Partidos\Edit.cshtml" />
+    <Content Include="Views\Partidos\Index.cshtml" />
+    <Content Include="Views\Partidos\IndexCopa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001172127059_id_empresa-enusuario.resx">
       <DependentUpon>202001172127059_id_empresa-enusuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201456218_torneo_partido.resx">
+      <DependentUpon>202001201456218_torneo_partido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

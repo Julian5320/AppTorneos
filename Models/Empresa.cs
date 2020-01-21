@@ -12,7 +12,6 @@ namespace AppTorneos.Models
         [Key]
         public int id { get; set; }
         public string Nombre { get; set; }
-
         public string id_Usuario { get; set; }
     }
 }

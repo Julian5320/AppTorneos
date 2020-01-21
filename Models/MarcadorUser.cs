@@ -9,6 +9,7 @@ namespace AppTorneos.Models
     public class MarcadorUser
     {
         [Key]
+         
         public int id { get; set; }
         public ApplicationUser id_user { get; set; }
         public Partido id_partido { get; set; }
