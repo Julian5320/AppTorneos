@@ -30,99 +30,287 @@
         <th>
             @Html.DisplayNameFor(model => model.horaUno)
         </th>
-        <th>
-            
-        </th>
+
 
     </tr>
-    <th>Grupo A</th>
-    @foreach (var item in Model)
+    @using (Html.BeginForm("Create", "MarcadorUsers"))
     {
-
-        if (item.grupo == "A")
+        <th>Grupo A</th>
+        foreach (var item in Model)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoUno)
-    </td>
-    <td>
-        <input type="number" style="width:50px"/>
-    </td>
-    <td>vs</td>
-    <td>
-        <input type="number" style="width:50px" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoDos)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.horaUno)
-    </td>
-    <td>
-        <button>Guardar</button>
-    </td>
 
-</tr>
+            if (item.grupo == "A")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+
+                </tr>
+            }
         }
-    }
-    <th>Grupo B</th>
-    @foreach (var item in Model)
-    {
 
-        if (item.grupo == "B")
+        <th>Grupo B</th>
+        foreach (var item in Model)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoUno)
-    </td>
-    <td>
-        <input type="number" style="width:50px" />
-    </td>
-    <td>vs</td>
-    <td>
-        <input type="number" style="width:50px" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoDos)
-    </td>
+            if (item.grupo == "B")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
 
-    <td>
-        @Html.DisplayFor(modelItem => item.horaUno)
-    </td>
-    <td>
-        <button>Guardar</button>
-    </td>
-</tr>
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+
+
+                </tr>
+            }
         }
-    }
-    <th>Grupo C</th>
-    @foreach (var item in Model)
-    {
 
-        if (item.grupo == "C")
+
+        <th>Grupo C</th>
+        foreach (var item in Model)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoUno)
-    </td>
-    <td>
-        <input type="number" style="width:50px" />
-    </td>
-    <td>vs</td>
-    <td>
-        <input type="number" style="width:50px" />
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.equipoDos)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.horaUno)
-    </td>
-    <td>
-        <button>Guardar</button>
-    </td>
-</tr>
-        }
-    }
 
+            if (item.grupo == "C")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+        <th>Octavos</th>
+        foreach (var item in Model)
+        {
+
+            if (item.grupo == "Octavos")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+        <th>Cuartos</th>
+        foreach (var item in Model)
+        {
+
+            if (item.grupo == "Cuartos")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+
+        <th>Semifinal</th>
+        foreach (var item in Model)
+        {
+
+            if (item.grupo == "Semifinal")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+        <th>Final</th>
+        foreach (var item in Model)
+        {
+
+            if (item.grupo == "Final")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+        <th>Tercero</th>
+        foreach (var item in Model)
+        {
+
+            if (item.grupo == "Tercero")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoUno)
+                    </td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado1" />
+
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <input type="number" style="width:50px" name="resultado2" />
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipoDos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.horaUno)
+                    </td>
+                    <td>
+                        <input style="display:none" name="torneo" value="@item.torneo" />
+                        <input style="display:none" name="idPartido" value="@item.id" />
+                        <input style="display:none" name="nombre" value="@User.Identity.Name" />
+                    </td>
+                </tr>
+            }
+        }
+
+        <button type="submit">Guardar</button>
+    }
 </table>

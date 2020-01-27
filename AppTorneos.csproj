@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscritosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarcadorUsersController.cs" />
     <Compile Include="Controllers\PartidosController.cs" />
     <Compile Include="Controllers\TorneosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,6 +198,14 @@
     <Compile Include="Migrations\202001201456218_torneo_partido.Designer.cs">
       <DependentUpon>202001201456218_torneo_partido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001211536575_sin_condiciones.cs" />
+    <Compile Include="Migrations\202001211536575_sin_condiciones.Designer.cs">
+      <DependentUpon>202001211536575_sin_condiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001211815514_string-a-int-id_partido.cs" />
+    <Compile Include="Migrations\202001211815514_string-a-int-id_partido.Designer.cs">
+      <DependentUpon>202001211815514_string-a-int-id_partido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Empresa.cs" />
@@ -208,6 +217,7 @@
     <Compile Include="Models\Partido.cs" />
     <Compile Include="Models\Torneo.cs" />
     <Compile Include="Models\ViewModel\EquiposYTorneos.cs" />
+    <Compile Include="Models\ViewModel\Marcadoresusuarios.cs" />
     <Compile Include="Models\ViewModel\PartidosDatos.cs" />
     <Compile Include="Models\ViewModel\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,6 +302,11 @@
     <Content Include="Views\Partidos\Edit.cshtml" />
     <Content Include="Views\Partidos\Index.cshtml" />
     <Content Include="Views\Partidos\IndexCopa.cshtml" />
+    <Content Include="Views\MarcadorUsers\Create.cshtml" />
+    <Content Include="Views\MarcadorUsers\Delete.cshtml" />
+    <Content Include="Views\MarcadorUsers\Details.cshtml" />
+    <Content Include="Views\MarcadorUsers\Edit.cshtml" />
+    <Content Include="Views\MarcadorUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001201456218_torneo_partido.resx">
       <DependentUpon>202001201456218_torneo_partido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211536575_sin_condiciones.resx">
+      <DependentUpon>202001211536575_sin_condiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211815514_string-a-int-id_partido.resx">
+      <DependentUpon>202001211815514_string-a-int-id_partido.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

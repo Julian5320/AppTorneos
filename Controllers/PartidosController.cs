@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using AppTorneos.Models;
 using AppTorneos.Models.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace AppTorneos.Controllers
 {
@@ -22,8 +23,88 @@ namespace AppTorneos.Controllers
         }
         public ActionResult IndexCopa()
         {
-            return View(db.Partidos.ToList());
+            var consulta = (from consultaa in db.Partidos where consultaa.torneo == "Copa America" select consultaa).ToList();
+            var id_usuario = User.Identity.GetUserId().ToString();
+            var consulta2 = (from consultaa2 in db.marcadorUsers select consultaa2).ToList();
+            List < Partido > partidos = new List<Partido>();
+            var crear = false;
+
+            foreach(var item in consulta)
+            {
+                crear = false;
+                if (consulta2.Count != 0)
+                {
+                    foreach (var item2 in consulta2)
+                    {
+                        if (item.id == item2.id_partido)
+                        {
+                            if (item2.id_user == User.Identity.GetUserId().ToString())
+                            {
+                                crear = false;
+                                break;
+                            }
+                            else
+                            {
+                                crear = true;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            crear = true;
+                        }
+                    }
+                    if(crear == true)
+                    {
+                        Partido partido = new Partido();
+                        partido.id = item.id;
+                        partido.torneo = item.torneo;
+                        partido.horaUno = item.horaUno;
+                        partido.horaDos = item.horaDos;
+                        partido.grupo = item.grupo;
+                        partido.equipoUno = item.equipoUno;
+                        partido.equipoDos = item.equipoDos;
+
+                        partidos.Add(partido);
+                        item.id = 0;
+
+                    }
+                }
+                else
+                {
+                    Partido partido = new Partido();
+                    partido.id = item.id;
+                    partido.torneo = item.torneo;
+                    partido.horaUno = item.horaUno;
+                    partido.horaDos = item.horaDos;
+                    partido.grupo = item.grupo;
+                    partido.equipoUno = item.equipoUno;
+                    partido.equipoDos = item.equipoDos;
+
+                    partidos.Add(partido);
+                }
+            }
+            
+            return View(partidos);
         }
+        //            {
+        //        var query = (from ur in db.marcadorUsers
+        //                     join u in db.Partidos on ur.id_partido equals u.id
+
+        //                     select new Marcadoresusuarios
+        //                     {
+        //                         id = u.id,
+        //                         id_user = ur.id_user,
+        //                         id_torneo = ur.id_torneo,
+        //                         grupo = u.grupo,
+        //                         resultadoUno = ur.resultadoUno,
+        //                         resultadoDos = ur.resultadoDos,
+        //                         equipoUno = u.equipoUno,
+        //                         equipoDos = u.equipoDos
+        //                     }).ToList();
+        //        return View(query);
+        //}
+
 
         // GET: Partidos/Details/5
         public ActionResult Details(int? id)
@@ -59,6 +140,9 @@ namespace AppTorneos.Controllers
             
             if (ModelState.IsValid)
             {
+                Convert.ToDateTime(partido.horaUno);
+                Convert.ToDateTime(partido.horaDos);
+
                 db.Partidos.Add(partido);
                 db.SaveChanges();
                 return RedirectToAction("Index");

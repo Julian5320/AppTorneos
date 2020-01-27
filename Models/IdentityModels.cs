@@ -10,6 +10,7 @@ namespace AppTorneos.Models
     public class ApplicationUser : IdentityUser
     {
         public int empresa_id { get; set; }
+        public int Points { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType

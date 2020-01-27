@@ -11,9 +11,9 @@ namespace AppTorneos.Models
         [Key]
          
         public int id { get; set; }
-        public ApplicationUser id_user { get; set; }
-        public Partido id_partido { get; set; }
-        public Torneo id_torneo { get; set; }
+        public string id_user { get; set; }
+        public int id_partido { get; set; }
+        public string id_torneo { get; set; }
         public int resultadoUno { get; set; }
         public int resultadoDos { get; set; }
 
